@@ -1,0 +1,22 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #d1e2cb;
+}
+
+canvas {
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 2px 8px -4px rgba(0, 0, 0, 0.25);
+}
+
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}

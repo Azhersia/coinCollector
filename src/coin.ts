@@ -1,5 +1,7 @@
 import { randomFloat } from "./random";
 
+let coinScore = 0;
+
 type Coin = {
   x: any,
   y: number,
@@ -99,10 +101,11 @@ export function createCoin() {
 
 export function removeCoin() {
   for (let i = 0; i < coins.length; i++) {
-    console.log(coins[i]);
 
     coins.splice(i, 1);
     coinBoxes.splice(i, 1);
+    coinScore++
+    console.log(coinScore)
   }
 }
 

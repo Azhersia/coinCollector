@@ -129,7 +129,7 @@ export function renderCoins(context: CanvasRenderingContext2D) {
       context.beginPath();
       context.rect(coinBox.x, coinBox.y, coinBox.w, coinBox.h);
 
-      context.fillStyle = 'blue';
+      context.fillStyle = 'yellow';
       context.fill();
 
 

@@ -1,4 +1,5 @@
-import { coinBoxes, removeCoin, renderCoins } from './coin';
+import { coinBoxes, coins, randomizePosition, removeCoin, renderCoins } from './coin';
+import { randomFloat } from './random';
 import './style.css'
 
 type Block = {
@@ -17,13 +18,13 @@ canvas.height = 600;
 export let blocks: Block[] = [
   {
     x: 150,
-    y: 300,
+    y: 305,
     width: 250,
     height: 250,
   },
   {
     x: 100,
-    y: 30,
+    y: 40,
     width: 320,
     height: 223,
   },
@@ -57,27 +58,29 @@ function gameLoop() {
 
 function update() {
   if (w) {
-    player.y -= 5;
+    player.y -= 7;
     yCollisions();
     coinYCollisions();
   };
   if (a) {
-    player.x -= 5;
+    player.x -= 7;
     xCollisions()
     coinXCollisions();
   };
   if (s) {
-    player.y += 5;
+    player.y += 7;
     yCollisions();
     coinYCollisions();
   };
   if (d) {
-    player.x += 5;
+    player.x += 7;
     xCollisions();
     coinXCollisions();
   };
 
   wallCollision();
+
+  randomizePosition();
 };
 
 function wallCollision() {
@@ -143,9 +146,10 @@ function coinXCollisions() {
   for (let i = 0; i < coinBoxes.length; i++) {
     let coinBox = coinBoxes[i];
 
-    if (player.x < coinBox.x + coinBox.w && player.y > coinBox.y - player.height && player.y < coinBox.y + coinBox.h && player.x + player.width > coinBox.x) {
-      removeCoin()
 
+
+    if (player.x < coinBox.x + coinBox.w && player.y > coinBox.y - player.height && player.y < coinBox.y + coinBox.h && player.x + player.width > coinBox.x) {
+      removeCoin(i)
     };
   };
 };
@@ -156,7 +160,8 @@ function coinYCollisions() {
     let coinBox = coinBoxes[i];
 
     if (player.x < coinBox.x + coinBox.w && player.y > coinBox.y - player.height - 2 && player.y < coinBox.y + coinBox.h - 2 && player.x + player.width > coinBox.x) {
-      removeCoin()
+      removeCoin(i)
+
     };
   };
 };
